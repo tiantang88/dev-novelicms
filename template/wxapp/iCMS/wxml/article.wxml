@@ -1,0 +1,72 @@
+<template name="article_item">
+        <navigator wx:if="{{item.id}}" url="{{item.url}}" hover-class="none">
+            <view class="article-item">
+                <view class="article-item-left" wx:if="{{item.pic.url}}">
+                    <image src="{{item.pic.url}}" class="article-image" />
+                </view>
+                <view class="article-item-right">
+                    <text class="article-item-title">{{item.title}}</text>
+                    <text class="article-item-description">{{item.description}}</text>
+                    <view class="article-item-info">
+                        <text class="article-item-category">{{item.category.name}}</text>
+                        <text class="article-item-pubdate">{{item.pubdate}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+</template>
+<template name="article_list">
+    <view class="article-list">
+        <block wx:for="{{article_list}}" wx:key="{{item.id}}">
+            <template is="article_item" data="{{item}}"/>
+        </block>
+        <block wx:if="{{!article_list.length}}">
+            <view class="clearfix"></view>
+            <view class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+        </block>
+    </view>
+</template>
+
+<template name="pic_list">
+    <view class="pic-list">
+        <block wx:for="{{article_list}}" wx:key="{{item.id}}">
+            <view class="pic-item">
+                <navigator wx:if="{{item.id}}" url="{{item.url}}" hover-class="none">
+                   <view class="pic-item-head" wx:if="{{item.pic.url}}">
+                        <image mode="widthFix" lazy-load="true" src="{{item.pic.url}}" class="pic-item-image" />
+                    </view>
+                    <view class="pic-item-title">{{item.title}}</view>
+                    <view class="pic-item-foot">
+                        <text class="pic-item-category">{{item.category.name}}</text>
+                        <text class="pic-item-pubdate">{{item.pubdate}}</text>
+                    </view>
+                </navigator>
+            </view>
+        </block>
+        <block wx:if="{{!article_list.length}}">
+            <view class="clearfix"></view>
+            <view class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+        </block>
+    </view>
+</template>
+
+<template name="banner">
+    <block wx:if="{{banner.length}}">
+        <swiper class="swiper-wrap" autoplay="true" interval="3000" duration="1000">
+            <block wx:for="{{banner}}" wx:key="{{item.id}}">
+                <navigator wx:if="{{item.id}}" url="{{item.url}}" hover-class="none">
+                    <swiper-item class="swiper">
+                        <image mode="aspectFill" src="{{item.pic.url}}" class="swiper-image" width="100%" height="100%" />
+                        <view class="swiper-title">
+                            <text>{{item.title}}</text>
+                        </view>
+                    </swiper-item>
+                </navigator>
+            </block>
+        </swiper>
+    </block>
+</template>

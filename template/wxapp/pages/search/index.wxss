@@ -1,0 +1,4 @@
+@import "../../iCMS/wxss/common.wxss";
+.page{padding-bottom:100rpx;}
+.weui-search-bar__label{margin-bottom: 0rpx;}
+

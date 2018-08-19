@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "collect-formid": "/iCMS/component/collect-formid"
+    }
+}
