@@ -15,13 +15,13 @@ define('iPHP_DB_HOST','localhost');// 服务器名或服务器ip,一般为localh
 define('iPHP_DB_PORT','3306'); //数据库端口
 define('iPHP_DB_USER','homestead');// 数据库用户
 define('iPHP_DB_PASSWORD','secret');//数据库密码
-define('iPHP_DB_NAME','novel'); // 数据库名
+define('iPHP_DB_NAME','vipnovel'); // 数据库名
 define('iPHP_DB_PREFIX','icms_');// 表名前缀, 同一数据库安装多个请修改此处
 define('iPHP_DB_CHARSET','utf8');//MYSQL编码设置.如果您的程序出现乱码现象，需要设置此项来修复. 请不要随意更改此项，否则将可能导致系统出现乱码现象
 define('iPHP_DB_PREFIX_TAG','#iCMS@__');// SQL表名前缀替换
 //define('iPHP_DB_COLLATE', 	'');
 //----------------------------------------
-define('iPHP_KEY','QvZ9bFSHc3YVWgwFndTWKPVCCcXrKhX5SUnuu3gLRPqqfYNyRSNY6qQTuGbp4gWs');
+define('iPHP_KEY','8f2Etz4mmFEzu3SApkhd3fxHgqF62PhbLZXYLsSHH2zFeGE9ALyJVNp6J29x4Zbu');
 define('iPHP_CHARSET','utf-8');
 //---------------cookie设置-------------------------
 define('iPHP_COOKIE_DOMAIN','');

@@ -8,5 +8,4 @@
 * @licence https://www.icmsdev.com/LICENSE.html
 */
 require dirname(__FILE__).'/iCMS.php';
-// echo $_SERVER['HTTP_USER_AGENT'];exit;
 iCMS::run();

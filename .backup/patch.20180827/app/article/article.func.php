@@ -95,17 +95,16 @@ class articleFunc{
 		isset($vars['nopic']) && $where_sql .= " AND `haspic`='0'";
 
 		switch ($vars['orderby']) {
-			case "id":       $order_sql = " ORDER BY `id` $by"; break;
-			case "hot":      $order_sql = " ORDER BY `hits` $by"; break;
-			case "today":    $order_sql = " ORDER BY `hits_today` $by"; break;
-			case "yday":     $order_sql = " ORDER BY `hits_yday` $by"; break;
-			case "week":     $order_sql = " ORDER BY `hits_week` $by"; break;
-			case "month":    $order_sql = " ORDER BY `hits_month` $by"; break;
-			case "good":  	 $order_sql = " ORDER BY `good` $by"; break;
-			case "comment":  $order_sql = " ORDER BY `comments` $by"; break;
-			case "pubdate":  $order_sql = " ORDER BY `pubdate` $by"; break;
-			case "sort": 	 $order_sql = " ORDER BY `sortnum` $by"; break;
-			case "weight":   $order_sql = " ORDER BY `weight` $by"; break;
+	        case "id":       $order_sql = " ORDER BY `id` $by"; break;
+	        case "hot":      $order_sql = " ORDER BY `hits` $by"; break;
+	        case "today":    $order_sql = " ORDER BY `hits_today` $by"; break;
+	        case "yday":     $order_sql = " ORDER BY `hits_yday` $by"; break;
+	        case "week":     $order_sql = " ORDER BY `hits_week` $by"; break;
+	        case "month":    $order_sql = " ORDER BY `hits_month` $by"; break;
+	        case "comment":  $order_sql = " ORDER BY `comments` $by"; break;
+	        case "pubdate":  $order_sql = " ORDER BY `pubdate` $by"; break;
+	        case "sort": $order_sql = " ORDER BY `sortnum` $by"; break;
+	        case "weight":   $order_sql = " ORDER BY `weight` $by"; break;
 			default:$order_sql = " ORDER BY `id` $by";
 		}
 		isset($vars['startdate']) && $where_sql .= " AND `pubdate`>='" . strtotime($vars['startdate']) . "'";

@@ -66,13 +66,13 @@ class iURL {
     public static function rule($matches) {
     	$b	= $matches[1];
         if(strpos($b,'RAND')!==false){
-            list($_b,$len,$is_num) = explode(':', $b);
+            list($_b,$len,$is_num) = explode(',', $b);
             empty($len) && $len = 8;
             return random($len,$is_num);
         }
         $_time = 0;
-        if(strpos($b,'AUTHID:')!==false||strpos($b,'AUTHCID:')!==false){
-            list($b,$_time) = explode(':', $b);
+        if(strpos($b,'AUTHID,')!==false||strpos($b,'AUTHCID,')!==false){
+            list($b,$_time) = explode(',', $b);
         }
     	list($a,$c,$tc) = self::$ARRAY;
         switch($b) {

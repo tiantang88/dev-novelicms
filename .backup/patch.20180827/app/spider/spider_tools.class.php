@@ -12,8 +12,6 @@ defined('iPHP') OR exit('What are you doing?');
 class spider_tools {
     public static $listArray = array();
     public static $curl_info = array();
-    public static $safe_port = array('80','443');//检测采集url端口
-    public static $safe_url  = false; //是否检测采集url安全性
 
     /**
      * 在数据项里调用之前采集的数据[DATA@name][DATA@name.key]
@@ -602,47 +600,20 @@ class spider_tools {
         unset($text,$textArray,$output);
         return implode($pageBreak, (array)$resource);
     }
-    public static function safe_url($url) {
+
+    public static function remote($url, $_count = 0) {
         $parsed = parse_url($url);
         $validate_ip = true;
-
-        if($parsed['port'] && is_array(self::$safe_port) && !in_array($parsed['port'],self::$safe_port)){
+        preg_match('/^\d+$/', $parsed['host']) && $parsed['host'] = long2ip($parsed['host']);
+        if(preg_match('/^\d+\.\d+\.\d+\.\d+$/', $parsed['host'])){
+            $validate_ip = filter_var($parsed['host'], FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+        }
+        if(!in_array($parsed['scheme'],array('http','https')) || !$validate_ip|| strtolower($parsed['host'])=='localhost'){
             if (spider::$dataTest || spider::$ruleTest) {
-                echo "<b>请求错误:非正常端口,因安全问题只允许抓取80,443端口的链接,如有特殊需求请自行修改程序</b>".PHP_EOL;
+                echo "<b>{$url} 请求错误:非正常URL格式,因安全问题只允许抓取 http:// 或 https:// 开头的链接或私有IP地址</b>";
             }
             return false;
-        }else{
-            preg_match('/^\d+$/', $parsed['host']) && $parsed['host'] = long2ip($parsed['host']);
-            $long = ip2long($parsed['host']);
-            if($long===false){
-                $ip = null;
-                if(self::$safe_url){
-                    @putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
-                    $ip   = gethostbyname($parsed['host']);
-                    $long = ip2long($ip);
-                    $long===false && $ip = null;
-                    @putenv('RES_OPTIONS');
-                }
-            }else{
-                $ip = $parsed['host'];
-            }
-            $ip && $validate_ip = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
         }
-
-        if(!in_array($parsed['scheme'],array('http','https')) || !$validate_ip){
-            if (spider::$dataTest || spider::$ruleTest) {
-                echo "<b>{$url} 请求错误:非正常URL格式,因安全问题只允许抓取 http:// 或 https:// 开头的链接或公有IP地址</b>".PHP_EOL;
-            }
-            return false;
-        }else{
-            return $url;
-        }
-    }
-    public static function remote($url, $_count = 0) {
-
-        if(self::safe_url($url)===false) return false;
-
-        $parsed = parse_url($url);
         $url = str_replace('&amp;', '&', $url);
         if(empty(spider::$referer)){
             spider::$referer = $parsed['scheme'] . '://' . $parsed['host'];

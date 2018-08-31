@@ -12,7 +12,6 @@ return array (
   'router' => 
   array (
     'url' => 'http://dev-icms.com',
-    'redirect' => '1',
     404 => 'http://dev-icms.com/public/404.htm',
     'public' => 'http://dev-icms.com/public',
     'user' => 'http://dev-icms.com/user',
@@ -254,7 +253,6 @@ return array (
     'dir' => 'res',
     'dir_format' => 'Y/m-d/H',
     'allow_ext' => 'gif,jpg,rar,swf,jpeg,png,zip',
-    'check_md5' => '1',
   ),
   'thumb' => 
   array (
@@ -263,25 +261,18 @@ return array (
   'watermark' => 
   array (
     'enable' => '1',
-    'mode' => '0',
-    'pos' => '9',
-    'x' => '10',
-    'y' => '10',
     'width' => '140',
     'height' => '140',
     'allow_ext' => 'jpg,jpeg,png',
+    'pos' => '9',
+    'x' => '10',
+    'y' => '10',
     'img' => 'watermark.png',
-    'transparent' => '80',
     'text' => 'iCMS',
     'font' => '',
     'fontsize' => '24',
     'color' => '#000000',
-    'mosaics' => 
-    array (
-      'width' => '150',
-      'height' => '90',
-      'deep' => '9',
-    ),
+    'transparent' => '80',
   ),
   'publish' => 
   array (
@@ -290,7 +281,6 @@ return array (
   array (
     'php' => '1',
     'php_trace' => '0',
-    'access_log' => '0',
     'tpl' => '1',
     'tpl_trace' => '0',
     'db' => '0',
@@ -336,7 +326,6 @@ return array (
     'database' => '32',
     'html' => '33',
     'spider' => '34',
-    'wxapp' => '100',
   ),
   'other' => 
   array (
@@ -368,11 +357,11 @@ return array (
     array (
       'tpl' => 'www/desktop',
       'index' => '{iTPL}/index.htm',
-      'domain' => 'http://dev-icms.com',
+      'domain' => 'https://www.icmsdev.com',
     ),
     'mobile' => 
     array (
-      'agent' => 'WAP,Smartphone,Mobile,UCWEB,Opera Mini,Windows CE,Symbian,SAMSUNG,iPhone,Android,BlackBerry,HTC,Mini,LG,SonyEricsson,J2ME,MOT,iPhone',
+      'agent' => 'WAP,Smartphone,Mobile,UCWEB,Opera Mini,Windows CE,Symbian,SAMSUNG,iPhone,Android,BlackBerry,HTC,Mini,LG,SonyEricsson,J2ME,MOT',
       'domain' => 'http://dev-icms.com',
       'tpl' => 'www/mobile',
       'index' => '{iTPL}/index.htm',

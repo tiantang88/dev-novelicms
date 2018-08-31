@@ -18,9 +18,8 @@ class menu {
         self::get_cache();
         // self::get_array(true);
 	}
-    public static function set($d='manage',$a=null) {
-        $a===null && $a = admincp::$APP_NAME;
-        self::$url = __ADMINCP__.'='.$a.'&do='.$d;
+    public static function set($d='manage') {
+        self::$url = __ADMINCP__.'='.admincp::$APP_NAME.'&do='.$d;
     }
     public static function mid($vars,$sort=0,$parent=null,$level=0){
         foreach ((array)$vars as $k => $v) {

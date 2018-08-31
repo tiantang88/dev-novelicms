@@ -57,10 +57,7 @@ class databaseAdmincp {
 		include admincp::view("database.replace");
 	}
 	public function do_batch() {
-		$tableA = (array) $_POST['table'];
-		$tableA OR iUI::alert("请选择要操作的表");
-		$tables = implode(',', $tableA);
-		$batch = $_POST['batch'];
+		list($idArray,$ids,$batch) = iUI::get_batch_args("请选择要操作的表");
 		switch ($batch) {
 		case 'backup':
 			$this->do_savebackup();

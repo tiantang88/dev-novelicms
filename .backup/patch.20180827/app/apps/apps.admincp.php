@@ -333,15 +333,13 @@ class appsAdmincp{
      * @return [type] [description]
      */
     public function do_local_app(){
-      $zipfile = trim($_POST['zipfile']);
-      if(preg_match("/^iCMS\.APP\.\w+\-v\d+\.\d+\.\d+\.zip$/", $zipfile)){
-        apps_store::$zip_file = $zipfile;
-        apps_store::$msg_mode = 'alert';
-        apps_store::install_app();
-        iUI::success('应用安装完成','js:1');
-      }else{
+      if(strpos($_POST['zipfile'], '..') !== false){
         iUI::alert('What the fuck!!');
       }
+      apps_store::$zip_file = trim($_POST['zipfile']);
+      apps_store::$msg_mode = 'alert';
+      apps_store::install_app();
+      iUI::success('应用安装完成','js:1');
     }
     /**
      * [打包下载应用]

@@ -461,8 +461,6 @@ class apps {
     }
     public static function update_count($id,$appid=0,$field,$math='+',$count=1){
         $rs = self::get_app($appid,false);
-        if(empty($rs)) return false;
-
         $tables = reset($rs['table']);
         if($tables){
             $fields = apps_db::fields($tables['table']);
